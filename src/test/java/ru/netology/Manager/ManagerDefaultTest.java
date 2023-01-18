@@ -36,7 +36,7 @@ public class ManagerDefaultTest {
 
     // Вывод последних добавленных фильмов в обратном порядке
     @Test
-    public void shouldFindLastFilms() {
+    public void shouldFindLastFilmsIfLessFilmsThanLimit() {
         manager.addNewFilm("Film 1");
         manager.addNewFilm("Film 2");
         manager.addNewFilm("Film 3");
@@ -53,16 +53,23 @@ public class ManagerDefaultTest {
 
     //
     @Test
-    public void shouldAddIfMoviesAreAlreadyAdded() {
+    public void shouldFindLastFilmsIfMoreFilmsThanLimit() {
         manager.addNewFilm("Film 1");
         manager.addNewFilm("Film 2");
-
-
+        manager.addNewFilm("Film 3");
         manager.addNewFilm("Film 4");
         manager.addNewFilm("Film 5");
+        manager.addNewFilm("Film 6");
+        manager.addNewFilm("Film 7");
+        manager.addNewFilm("Film 8");
+        manager.addNewFilm("Film 9");
+        manager.addNewFilm("Film 10");
+        manager.addNewFilm("Film 11");
+        manager.addNewFilm("Film 12");
 
-        String[] expected = {"Film 1", "Film 2", "Film 4", "Film 5"};
-        String[] actual = manager.findAll();
+
+        String[] expected = {"Film 12", "Film 11", "Film 10", "Film 9", "Film 8", "Film 7", "Film 6", "Film 5", "Film 4", "Film 3"};
+        String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }

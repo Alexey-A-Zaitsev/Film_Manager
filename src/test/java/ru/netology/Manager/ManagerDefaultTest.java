@@ -56,9 +56,15 @@ public class ManagerDefaultTest {
     public void shouldAddIfMoviesAreAlreadyAdded() {
         manager.addNewFilm("Film 1");
         manager.addNewFilm("Film 2");
-        manager.addNewFilm("Film 3");
 
+
+        manager.addNewFilm("Film 4");
+        manager.addNewFilm("Film 5");
+
+        String[] expected = {"Film 1", "Film 2", "Film 4", "Film 5"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
     }
-
 
 }

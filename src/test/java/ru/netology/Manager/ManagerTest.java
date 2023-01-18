@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ManagerTest {
-        Manager manager = new Manager(5);
+    Manager manager = new Manager(5);
 
     @Test
     public void shouldFindLastFilmsIfMoreFilmsThanLimit() {
@@ -39,6 +39,5 @@ public class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
 
     }
-
 
 }

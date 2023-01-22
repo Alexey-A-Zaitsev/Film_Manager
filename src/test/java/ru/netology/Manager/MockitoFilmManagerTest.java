@@ -50,11 +50,13 @@ public class MockitoFilmManagerTest {
 
     @Test
     public void shouldFindLastIfMoreFilmsThanLimit() {
+        // Задаём лимит вывода
+        manager.setLimit(6);
         Movie[] film = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12};
         doReturn(film).when(repo).findAll();
 
 
-        Movie[] expected = {movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3};
+        Movie[] expected = {movie12, movie11, movie10, movie9, movie8, movie7};
         Movie[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);

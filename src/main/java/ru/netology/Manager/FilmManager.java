@@ -14,13 +14,13 @@ public class FilmManager {
         this.limit = limit;
     }
 
-    public FilmManager (MovieRepository repo) {
+    public FilmManager(MovieRepository repo) {
         this.repo = repo;
         this.limit = 10;
     }
 
     // Добавление нового фильма
-    public void add (Movie film) {
+    public void add(Movie film) {
         repo.save(film);
     }
 
@@ -29,10 +29,18 @@ public class FilmManager {
         return repo.findAll();
     }
 
-    //
+    // Вывод последних добавленных фильмов в обратном порядке
     public Movie[] findLast() {
+
+        int managerLimit;
+        if (repo.findAll().length < limit) {
+            managerLimit = repo.findAll().length;
+        } else {
+            managerLimit = limit;
+        }
+
         Movie[] all = repo.findAll();
-        Movie[] last = new Movie[all.length];
+        Movie[] last = new Movie[managerLimit];
         for (int i = 0; i < last.length; i++) {
             last[i] = all[all.length - 1 - i];
         }

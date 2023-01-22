@@ -5,12 +5,12 @@ import ru.netology.Manager.Movie;
 public class MovieRepository {
     private Movie[] films = new Movie[0];
 
-    // возвращает массив всех хранящихся в массиве объектов
+    // Возвращает массив всех хранящихся в массиве объектов
     public Movie[] findAll() {
         return films;
     }
 
-    // добавляет объект в массив
+    // Добавляет объект в массив
     public void save(Movie film) {
         Movie[] tmp = new Movie[films.length + 1];
         for (int i = 0; i < films.length; i++) {
@@ -20,6 +20,7 @@ public class MovieRepository {
         films = tmp;
     }
 
+    // Возвращает объект по идентификатору, либо null, если такого объекта нет
     public Movie findById(int id) {
 
         for (Movie film : films) {
@@ -30,6 +31,7 @@ public class MovieRepository {
         return null;
     }
 
+    // Удаляет объект по идентификатору
     public void removeById(int id) {
         Movie[] tmp = new Movie[films.length - 1];
         int copyToIndex = 0;
@@ -42,10 +44,9 @@ public class MovieRepository {
         films = tmp;
     }
 
+    // Полностью вычищает репозиторий
     public void removeAll() {
         Movie[] tmp = new Movie[0];
         films = tmp;
     }
-
-
 }
